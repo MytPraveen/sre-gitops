@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sre-probe
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: sre-probe
+  template:
+    metadata:
+      labels:
+        app: sre-probe
+    spec:
+      containers:
+      - name: sre-probe
+        image: praveendevops95/sre-probe:1.2
+        ports:
+        - containerPort: 8000
